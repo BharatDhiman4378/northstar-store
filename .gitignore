@@ -1,0 +1,14 @@
+Python
+pycache/ *.py[cod] *.pyo .pytest_cache/ .venv/ venv/ env/
+Django
+*.log db.sqlite3 media/ staticfiles/
+Environment variables and secrets
+.env .env.* !.env.example
+Node.js
+node_modules/ dist/ npm-debug.log*
+IDEs
+.vscode/ .idea/
+Operating system
+.DS_Store Thumbs.db
+Test and coverage output
+.coverage htmlcov/
