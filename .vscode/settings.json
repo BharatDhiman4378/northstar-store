@@ -1,0 +1,4 @@
+{
+    "python.defaultInterpreterPath": "${workspaceFolder}/services/user-services/.venv/Scripts/python.exe",
+    "python-envs.defaultEnvManager": "ms-python.python:system"
+}
