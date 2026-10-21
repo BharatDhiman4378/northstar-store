@@ -1,0 +1,56 @@
+.password-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-input-wrapper input {
+  padding-right: 65px;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 12px;
+  border: none;
+  background: transparent;
+  color: var(--forest, #315c4c);
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.password-toggle:hover {
+  text-decoration: underline;
+}
+
+.forgot-password-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin: -3px 0 22px;
+  color: var(--muted, #77786f);
+  font-size: 11px;
+}
+
+.text-button {
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--forest, #315c4c);
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.text-button:hover {
+  text-decoration: underline;
+}
+
+.form-message {
+  margin: 0 0 14px;
+  color: var(--muted, #77786f);
+  font-size: 12px;
+  line-height: 1.6;
+}
