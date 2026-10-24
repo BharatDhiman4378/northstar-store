@@ -57,10 +57,9 @@ MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
 ]
 
-CORS_ALLOWED_ORIGIN=[
-    'https://localhost:5173',
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",
 ]
-
 ROOT_URLCONF = 'config.urls'
 
 TEMPLATES = [
