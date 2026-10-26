@@ -25,6 +25,7 @@ authenticatedApi.interceptors.request.use((config) => {
   return config;
 });
 
+
 let refreshPromise = null;
 
 authenticatedApi.interceptors.response.use(
@@ -42,6 +43,15 @@ authenticatedApi.interceptors.response.use(
       return Promise.reject(error);
     }
 
+    // If there is no refresh token, don't try to refresh.
+    // Public pages such as Products must remain accessible.
+    const refreshToken = sessionStorage.getItem("northstar_refresh");
+
+    if (!refreshToken) {
+      clearTokens();
+      return Promise.reject(error);
+    }
+
     originalRequest._retry = true;
 
     try {
@@ -53,13 +63,22 @@ authenticatedApi.interceptors.response.use(
 
       const newAccessToken = await refreshPromise;
 
+      originalRequest.headers = originalRequest.headers || {};
       originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
 
       return authenticatedApi(originalRequest);
     } catch (refreshError) {
       clearTokens();
 
-      if (window.location.pathname !== "/login") {
+      // Redirect only when the current page actually requires login.
+      const protectedPaths = ["/home", "/cart"];
+      const requiresLogin = protectedPaths.some(
+        (path) =>
+          window.location.pathname === path ||
+          window.location.pathname.startsWith(`${path}/`)
+      );
+
+      if (requiresLogin && window.location.pathname !== "/login") {
         window.location.replace("/login");
       }
 

@@ -56,6 +56,41 @@ export default function ProductDetailPage() {
       </main>
     );
   }
+    
+async function handleAddToCart(product) {
+  const accessToken = sessionStorage.getItem("northstar_access");
+
+  // Stop before calling the Cart Service if logged out.
+  if (!accessToken) {
+    setCartMessage("Please login to add products to your cart.");
+    window.setTimeout(() => setCartMessage(""), 5000);
+    return;
+  }
+
+  try {
+    const result = await addToCart(product);
+
+    if (result.success) {
+      setCartMessage(result.message || "Added to your bag.");
+    } else {
+      setCartMessage(
+        result.message || "Unable to add this product to your cart."
+      );
+    }
+  } catch (error) {
+    if (error.response?.status === 401) {
+      setCartMessage("Please login to add products to your cart.");
+    } else {
+      setCartMessage(
+        error.response?.data?.detail ||
+        error.response?.data?.message ||
+        "Failed to add product to cart."
+      );
+    }
+  }
+
+  window.setTimeout(() => setCartMessage(""), 5000);
+}
 
   return (
     <main className="product-detail">
@@ -107,12 +142,7 @@ export default function ProductDetailPage() {
           <button
             type="button"
             disabled={product.stock_quantity === 0}
-            onClick={() => {
-                const result = addToCart(product);
-                setCartMessage(result.message);
-                window.setTimeout(() => setCartMessage(""), 5000)
-            }}
-          >
+            onClick={() => handleAddToCart(product)}>
             {product.stock_quantity > 0
               ? "Add to bag"
               : "Out of stock"}
