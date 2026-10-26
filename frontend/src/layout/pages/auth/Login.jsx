@@ -54,7 +54,7 @@ function Login() {
 
     try {
       await login(formData.email.trim(), formData.password);
-      window.location.assign("/home");
+      window.location.assign("/products");
     } catch (error) {
     console.error("Login failed:", error);
 

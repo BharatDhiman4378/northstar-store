@@ -1,0 +1,131 @@
+.store-layout {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: #faf9f6;
+    color: #20231f;
+}
+
+.store-header {
+    min-height: 76px;
+    padding: 16px 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    background: #fff;
+    border-bottom: 1px solid #e9e7e1;
+}
+
+.store-logo {
+    color: #20231f;
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.store-logo span {
+    color: #a46d43;
+}
+
+.store-nav,
+.store-actions {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.store-nav a,
+.store-account,
+.store-cart {
+    color: #44483f;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.store-nav a.active {
+    color: #a46d43;
+    font-weight: 700;
+}
+
+.store-cart {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.cart-count {
+    min-width: 24px;
+    height: 24px;
+    padding: 0 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #eee9df;
+    color: #20231f;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.store-auth-button {
+    padding: 10px 16px;
+    border: 1px solid #20231f;
+    border-radius: 4px;
+    background: #20231f;
+    color: #fff;
+    font: inherit;
+    font-size: 13px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.store-main {
+    flex: 1;
+    width: 100%;
+}
+
+.store-footer {
+    padding: 28px 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    background: #fff;
+    border-top: 1px solid #e9e7e1;
+}
+
+.store-footer p,
+.store-footer>span {
+    margin: 0;
+    color: #74766e;
+    font-size: 12px;
+}
+
+@media (max-width: 640px) {
+    .store-header {
+        flex-wrap: wrap;
+        gap: 16px;
+    }
+
+    .store-nav {
+        order: 3;
+        width: 100%;
+    }
+
+    .store-actions {
+        gap: 12px;
+    }
+
+    .store-account {
+        display: none;
+    }
+
+    .store-footer {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
